@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="description" content="Construindo seu Projeto — briefing de design de Lucas Lima." />
+  <title>Construindo seu Projeto — Lucas Lima</title>
+  <link rel="icon" href="Caca.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="Caca.ico" type="image/x-icon" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== HEADER ===== -->
+  <header class="topbar">
+    <div class="header-main">
+      <div class="logo-area">
+        <img src="Caca.png" alt="Cacá, o gato do estúdio" />
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <div class="marquee-unit"><span class="mq-name">LUCAS LIMA</span><span class="mq-sep">✳</span><span class="mq-role">design gráfico</span><span class="mq-sep">✳</span></div>
+          <div class="marquee-unit"><span class="mq-name">LUCAS LIMA</span><span class="mq-sep">✳</span><span class="mq-role">design gráfico</span><span class="mq-sep">✳</span></div>
+          <div class="marquee-unit"><span class="mq-name">LUCAS LIMA</span><span class="mq-sep">✳</span><span class="mq-role">design gráfico</span><span class="mq-sep">✳</span></div>
+          <div class="marquee-unit"><span class="mq-name">LUCAS LIMA</span><span class="mq-sep">✳</span><span class="mq-role">design gráfico</span><span class="mq-sep">✳</span></div>
+        </div>
+      </div>
+      <p class="sr-only">Lucas Lima — design gráfico</p>
+    </div>
+
+    <div class="color-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+
+    <div class="progress-strip">
+      <span id="stepLabel">01 / 07</span>
+      <div class="progress"><span id="progressBar"></span></div>
+    </div>
+  </header>
+
+  <!-- ===== MARGENS ===== -->
+  <div class="rail rail-left" aria-hidden="true">
+    <div class="rail-grid"></div>
+    <div class="rail-blocks"><i class="b-red"></i><i class="b-blue"></i><i class="b-yellow"></i></div>
+  </div>
+  <div class="rail rail-right" aria-hidden="true">
+    <div class="rail-marks"><i>┼</i><i>┼</i><i>┼</i></div>
+    <div class="rail-num" id="railNum">01</div>
+  </div>
+
+  <main>
+    <!-- ===== 00 — ABERTURA ===== -->
+    <section class="screen active intro" data-step="0" style="--accent:var(--red)">
+      <div class="kicker">briefing de design</div>
+      <h1>ANTES DE<br>CRIAR,<br><span class="h-light">vamos conversar.</span></h1>
+      <div class="rule"></div>
+      <p class="intro-copy">São sete perguntas sobre o que você imagina para esse projeto: o que ele precisa fazer, que cores te agradam, que clima combina. Você não precisa saber falar “design”. Responda do seu jeito, que eu traduzo.</p>
+      <button class="primary next" type="button">começar</button>
+      <div class="micro">uns 5 a 8 minutos · não tem resposta errada · o que você escrever fica salvo aqui</div>
+    </section>
+
+    <!-- ===== 01 — PROJETO ===== -->
+    <section class="screen" data-step="1" style="--accent:var(--red)">
+      <div class="step-head">
+        <div class="step-num">01</div>
+        <div>
+          <h2>O QUE ESTAMOS<br>CONSTRUINDO?</h2>
+          <p class="hint">Marque quantas opções quiser. Se ainda estiver em dúvida, marque o que chegar mais perto.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="module-grid" data-multi="projectType">
+        <button class="module" type="button" data-value="Identidade visual"><i>✳</i><span>Identidade visual</span></button>
+        <button class="module" type="button" data-value="Marca / logo"><i>◉</i><span>Marca / logo</span></button>
+        <button class="module" type="button" data-value="Cartaz / pôster"><i>▤</i><span>Cartaz / pôster</span></button>
+        <button class="module" type="button" data-value="Social media"><i>▦</i><span>Social media</span></button>
+        <button class="module" type="button" data-value="Editorial / publicação"><i>▥</i><span>Editorial / publicação</span></button>
+        <button class="module" type="button" data-value="Embalagem"><i>□</i><span>Embalagem</span></button>
+        <button class="module" type="button" data-value="Site / digital"><i>⌁</i><span>Site / digital</span></button>
+        <button class="module" type="button" data-value="Outro"><i>＋</i><span>Outro</span></button>
+      </div>
+      <div class="rule thin"></div>
+      <label class="field-label" for="projectDescription">me conte um pouco</label>
+      <textarea id="projectDescription" placeholder="Ex.: tenho uma cafeteria pequena e quero uma cara própria pra ela."></textarea>
+    </section>
+
+    <!-- ===== 02 — INTENÇÃO ===== -->
+    <section class="screen" data-step="2" style="--accent:var(--blue)">
+      <div class="step-head">
+        <div class="step-num">02</div>
+        <div>
+          <h2>O QUE VOCÊ QUER<br>QUE ELE FAÇA?</h2>
+          <p class="hint">Todo projeto tem um trabalho pra fazer, além de ficar bonito. Qual é o desse?</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="line-list" data-single="intention">
+        <button class="line-item" type="button" data-value="Apresentar uma ideia"><em>01</em>Apresentar uma ideia</button>
+        <button class="line-item" type="button" data-value="Atrair atenção"><em>02</em>Atrair atenção</button>
+        <button class="line-item" type="button" data-value="Transmitir profissionalismo"><em>03</em>Transmitir profissionalismo</button>
+        <button class="line-item" type="button" data-value="Criar identificação"><em>04</em>Criar identificação</button>
+        <button class="line-item" type="button" data-value="Vender / divulgar"><em>05</em>Vender / divulgar</button>
+        <button class="line-item" type="button" data-value="Criar uma experiência"><em>06</em>Criar uma experiência</button>
+        <button class="line-item" type="button" data-value="Outro"><em>07</em>Outro</button>
+      </div>
+      <label class="field-label" for="intentionDescription">o que você espera que aconteça depois</label>
+      <textarea id="intentionDescription" placeholder="Alguém vê o projeto e aí… o quê?"></textarea>
+    </section>
+
+    <!-- ===== 03 — CORES ===== -->
+    <section class="screen" data-step="3" style="--accent:var(--yellow)">
+      <div class="step-head">
+        <div class="step-num">03</div>
+        <div>
+          <h2>QUAIS CORES<br>PERTENCEM A<br>ESSE PROJETO?</h2>
+          <p class="hint">Escolha até 5. Clique de novo pra tirar. Vale ir pelo instinto.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="color-grid" data-multi="colors">
+        <button class="color-card" type="button" data-value="Vermelho" style="--swatch:#C74634"><i></i><span>vermelho</span></button>
+        <button class="color-card" type="button" data-value="Laranja" style="--swatch:#D97832"><i></i><span>laranja</span></button>
+        <button class="color-card" type="button" data-value="Amarelo" style="--swatch:#D8B84C"><i></i><span>amarelo</span></button>
+        <button class="color-card" type="button" data-value="Verde" style="--swatch:#718B68"><i></i><span>verde</span></button>
+        <button class="color-card" type="button" data-value="Azul" style="--swatch:#55728A"><i></i><span>azul</span></button>
+        <button class="color-card" type="button" data-value="Roxo" style="--swatch:#806D8C"><i></i><span>roxo</span></button>
+        <button class="color-card" type="button" data-value="Rosa" style="--swatch:#C88791"><i></i><span>rosa</span></button>
+        <button class="color-card" type="button" data-value="Marrom" style="--swatch:#86684F"><i></i><span>marrom</span></button>
+        <button class="color-card" type="button" data-value="Preto" style="--swatch:#171717"><i></i><span>preto</span></button>
+        <button class="color-card" type="button" data-value="Off-white / creme" style="--swatch:#E9E2D4"><i></i><span>creme</span></button>
+      </div>
+      <div class="palette-bar">
+        <div class="palette-strip" id="paletteStrip"><span class="palette-empty">sua paleta aparece aqui</span></div>
+        <div class="counter"><span id="colorCount">00</span> / 05</div>
+      </div>
+    </section>
+
+    <!-- ===== 04 — TIPOGRAFIA ===== -->
+    <section class="screen" data-step="4" style="--accent:var(--red)">
+      <div class="step-head">
+        <div class="step-num">04</div>
+        <div>
+          <h2>QUE VOZ TEM<br>ESSE PROJETO?</h2>
+          <p class="hint">Cada tipo de letra fala de um jeito. Escolha até 2 que combinam com a personalidade que você imagina.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="font-list" data-multi="fonts">
+        <button class="font-row" type="button" data-value="Geométrica">
+          <span class="fr-tag">geométrica</span>
+          <strong class="f1">forma &amp; estrutura</strong>
+          <span class="fr-ex">Avenir · Futura · Montserrat</span>
+        </button>
+        <button class="font-row" type="button" data-value="Neo Grotesca">
+          <span class="fr-tag">neo grotesca</span>
+          <strong class="f2">clareza &amp; sistema</strong>
+          <span class="fr-ex">Helvetica · Arial · Inter</span>
+        </button>
+        <button class="font-row" type="button" data-value="Humanista">
+          <span class="fr-tag">humanista</span>
+          <strong class="f3">humana &amp; aberta</strong>
+          <span class="fr-ex">Gill Sans · Frutiger</span>
+        </button>
+        <button class="font-row" type="button" data-value="Serifada">
+          <span class="fr-tag">serifada</span>
+          <strong class="f4">ritmo &amp; tradição</strong>
+          <span class="fr-ex">Garamond · Times · Georgia</span>
+        </button>
+        <button class="font-row" type="button" data-value="Monoespaçada">
+          <span class="fr-tag">monoespaçada</span>
+          <strong class="f5">técnica &amp; editorial</strong>
+          <span class="fr-ex">Courier · IBM Plex Mono</span>
+        </button>
+        <button class="font-row" type="button" data-value="Display / experimental">
+          <span class="fr-tag">display</span>
+          <strong class="f6">expressiva &amp; única</strong>
+          <span class="fr-ex">tipos com personalidade</span>
+        </button>
+      </div>
+      <div class="micro" id="fontCounter">00 / 02 escolhidas</div>
+      <label class="field-label" for="fontFavorite">tem alguma fonte que você ama?</label>
+      <input id="fontFavorite" type="text" placeholder="Pode escrever o nome, se souber" />
+    </section>
+
+    <!-- ===== 05 — SENSAÇÃO ===== -->
+    <section class="screen" data-step="5" style="--accent:var(--blue)">
+      <div class="step-head">
+        <div class="step-num">05</div>
+        <div>
+          <h2>COMO DEVE<br>SER SENTIR<br>ISSO?</h2>
+          <p class="hint">Marque as palavras que combinam com o clima que você quer. Pode marcar várias.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="tag-cloud" data-multi="feelings">
+        <button class="tag" type="button" data-value="Elegante">elegante</button>
+        <button class="tag" type="button" data-value="Arrojado">arrojado</button>
+        <button class="tag" type="button" data-value="Calmo">calmo</button>
+        <button class="tag" type="button" data-value="Experimental">experimental</button>
+        <button class="tag" type="button" data-value="Acolhedor">acolhedor</button>
+        <button class="tag" type="button" data-value="Minimalista">minimalista</button>
+        <button class="tag" type="button" data-value="Divertido">divertido</button>
+        <button class="tag" type="button" data-value="Sofisticado">sofisticado</button>
+        <button class="tag" type="button" data-value="Bruto">bruto</button>
+        <button class="tag" type="button" data-value="Artesanal">artesanal</button>
+        <button class="tag" type="button" data-value="Tecnológico">tecnológico</button>
+        <button class="tag" type="button" data-value="Institucional">institucional</button>
+        <button class="tag" type="button" data-value="Jovem">jovem</button>
+        <button class="tag" type="button" data-value="Nostálgico">nostálgico</button>
+        <button class="tag" type="button" data-value="Urbano">urbano</button>
+        <button class="tag" type="button" data-value="Orgânico">orgânico</button>
+        <button class="tag" type="button" data-value="Discreto">discreto</button>
+        <button class="tag" type="button" data-value="Energético">energético</button>
+      </div>
+      <div class="rule thin"></div>
+      <label class="field-label" for="message">se fosse resumir em uma frase</label>
+      <textarea id="message" placeholder="“Quero que as pessoas sintam que…”"></textarea>
+    </section>
+
+    <!-- ===== 06 — REFERÊNCIAS ===== -->
+    <section class="screen" data-step="6" style="--accent:var(--yellow)">
+      <div class="step-head">
+        <div class="step-num">06</div>
+        <div>
+          <h2>JUNTE SUAS<br>REFERÊNCIAS</h2>
+          <p class="hint">Reúna algumas imagens com a energia que você quer pro projeto. Isso ajuda mais do que qualquer descrição.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+
+      <div class="ref-split">
+        <div class="ref-block ref-blue">
+          <div class="ref-kicker">pra descobrir</div>
+          <strong>Pinterest</strong>
+          <p>Bom pra garimpar e perceber o que te atrai. Não procure o logo perfeito: procure coisas que façam você pensar “é essa sensação”.</p>
+          <a class="ghost-btn" href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer">abrir Pinterest ↗</a>
+        </div>
+        <div class="ref-block ref-red">
+          <div class="ref-kicker">pra organizar</div>
+          <strong>Google Drive</strong>
+          <p>Junte tudo numa pasta só e me passe um link. É de lá que eu vou trabalhar.</p>
+          <a class="ghost-btn" href="https://drive.google.com/" target="_blank" rel="noopener noreferrer">abrir Google Drive ↗</a>
+        </div>
+      </div>
+
+      <p class="ref-list-intro">Vale imagem, fotografia, cartaz, capa de disco, prédio, roupa, embalagem, textura, cena de filme, cor, lugar. Qualquer coisa que tenha o clima certo.</p>
+
+      <div class="rule thin"></div>
+      <div class="tut-head">como montar a pasta</div>
+      <ol class="tutorial">
+        <li>
+          <span class="t-num">01</span>
+          <div>
+            <strong>Crie uma pasta</strong>
+            <p>No Google Drive, crie uma pasta nova. Pode chamar assim:</p>
+            <code>REFERÊNCIAS — [NOME DO PROJETO]</code>
+          </div>
+        </li>
+        <li>
+          <span class="t-num">02</span>
+          <div>
+            <strong>Jogue tudo dentro</strong>
+            <p>Imagens, PDFs, prints, o que você tiver salvo e tiver a ver com o que imagina.</p>
+          </div>
+        </li>
+        <li>
+          <span class="t-num">03</span>
+          <div>
+            <strong>Organize se der vontade</strong>
+            <p>Dá pra separar em subpastas, mas é opcional:</p>
+            <code class="tree">REFERÊNCIAS
+├── CORES
+├── TIPOGRAFIA
+├── FOTOGRAFIA
+├── FORMAS
+├── TEXTURAS
+└── OUTROS</code>
+          </div>
+        </li>
+        <li>
+          <span class="t-num">04</span>
+          <div>
+            <strong>Libere o acesso</strong>
+            <p>Dentro da pasta: <em>Compartilhar → Acesso geral → Qualquer pessoa com o link → Leitor.</em> Sem isso eu não consigo abrir.</p>
+          </div>
+        </li>
+        <li>
+          <span class="t-num">05</span>
+          <div>
+            <strong>Cole o link aqui embaixo</strong>
+            <p>Copie o link e cole no campo a seguir.</p>
+          </div>
+        </li>
+      </ol>
+
+      <label class="field-label" for="drive">link da sua pasta de referências</label>
+      <input id="drive" type="url" inputmode="url" placeholder="https://drive.google.com/..." />
+      <label class="field-label" for="pinterest">link do Pinterest <span>(se tiver)</span></label>
+      <input id="pinterest" type="url" inputmode="url" placeholder="https://pinterest.com/..." />
+
+      <div class="rule thin"></div>
+      <div class="tut-head">quatro dicas na hora de enviar</div>
+      <div class="send-grid">
+        <div><span>01</span><strong>Um link resolve</strong><p>Cole a pasta aqui em cima e mande o mesmo link no WhatsApp depois.</p></div>
+        <div><span>02</span><strong>Se for mandar imagem solta</strong><p>Melhor poucas e importantes do que trinta de uma vez.</p></div>
+        <div><span>03</span><strong>Diga o porquê</strong><p>“Gosto dessa pela textura.” Isso vale mais do que a imagem sozinha.</p></div>
+        <div><span>04</span><strong>Pode ser contraditório</strong><p>Referências que brigam entre si também me dizem muita coisa.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== 07 — CONTATO ===== -->
+    <section class="screen" data-step="7" style="--accent:var(--red)">
+      <div class="step-head">
+        <div class="step-num">07</div>
+        <div>
+          <h2>ME CONTE<br>QUEM VOCÊ É</h2>
+          <p class="hint">Só pra eu saber com quem estou falando e conseguir te responder.</p>
+        </div>
+      </div>
+      <div class="rule"></div>
+      <div class="two-fields">
+        <div><label class="field-label" for="name">seu nome</label><input id="name" required placeholder="Como posso te chamar?" /></div>
+        <div><label class="field-label" for="email">e-mail</label><input id="email" type="email" inputmode="email" placeholder="voce@email.com" /></div>
+      </div>
+      <label class="field-label" for="clientWhatsapp">whatsapp <span>(se preferir por aí)</span></label>
+      <input id="clientWhatsapp" type="tel" inputmode="tel" placeholder="(00) 00000-0000" />
+      <label class="field-label" for="extra">ficou faltando alguma coisa?</label>
+      <textarea id="extra" placeholder="Um detalhe, um prazo, uma preocupação, uma ideia solta."></textarea>
+
+      <div class="rule thin"></div>
+      <div class="tut-head">seu briefing até aqui</div>
+      <dl class="summary" id="summary"></dl>
+
+      <div class="send-note">
+        Ao enviar, suas respostas viram uma mensagem organizada e abrem uma conversa comigo no WhatsApp. Se quiser guardar uma cópia, baixe o PDF.
+      </div>
+      <div class="send-actions">
+        <button id="sendWhatsApp" class="primary send" type="button">enviar projeto ↗</button>
+        <button id="downloadPdf" class="primary pdf" type="button">baixar briefing em PDF</button>
+      </div>
+      <p id="errorMessage" class="error" role="alert"></p>
+    </section>
+
+    <nav class="controls">
+      <button id="back" class="back" type="button">← voltar</button>
+      <button id="restart" class="restart" type="button">recomeçar</button>
+      <button id="next" class="primary" type="button">continuar →</button>
+    </nav>
+  </main>
+
+  <!-- ===== COLOFÃO / CONTATO ===== -->
+  <footer class="colophon">
+    <div class="colo-grid">
+      <div class="colo-id">
+        <img src="Caca.png" alt="" aria-hidden="true" />
+        <div>
+          <strong>LUCAS LIMA</strong>
+          <span>design gráfico</span>
+        </div>
+      </div>
+
+      <div class="colo-block">
+        <span class="colo-label">fale comigo</span>
+        <a href="https://wa.me/5577981279726" target="_blank" rel="noopener noreferrer">(77) 98127-9726</a>
+        <a href="mailto:lucasst.lima09@gmail.com">lucasst.lima09@gmail.com</a>
+      </div>
+
+      <div class="colo-block">
+        <span class="colo-label">o que eu faço</span>
+        <p>identidade visual, marca, cartaz, social media, editorial e embalagem</p>
+      </div>
+    </div>
+    <div class="colo-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="colo-foot"><span>construindo seu projeto</span><span>2026</span></div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

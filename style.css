@@ -1,0 +1,383 @@
+/* =========================
+   01. DESIGN TOKENS
+========================= */
+:root{
+  --paper:#F3F0E8;
+  --paper-dark:#E4DFD2;
+  --ink:#11110F;
+  --body:#24221E;
+  --muted:#565248;
+
+  --red:#B23A2C;
+  --blue:#2C4AA8;
+  --yellow:#C9A227;
+
+  --line:#B9B2A2;
+  --accent:var(--red);
+  --ink-soft:#3A3934;
+
+  --sans:"Inter","Helvetica Neue",Arial,sans-serif;
+  --mono:"Fira Code","SFMono-Regular",Consolas,monospace;
+
+  --header-h:150px;
+  --controls-h:66px;
+  --gutter:6vw;
+}
+
+/* =========================
+   02. RESET
+========================= */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + env(safe-area-inset-top,0px))}
+body{
+  margin:0;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  overflow-x:hidden;
+  min-height:100vh;
+}
+button{font-family:inherit;color:inherit}
+img{max-width:100%;display:block}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+
+/* --- textura de papel --- */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:30;opacity:.09;
+  background-image:radial-gradient(rgba(0,0,0,.6) .5px,transparent .5px);
+  background-size:4px 4px;
+}
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:29;opacity:.45;
+  background:
+    linear-gradient(105deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,0) 40%),
+    repeating-linear-gradient(94deg,rgba(0,0,0,.02) 0 1px,transparent 1px 7px);
+}
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:28;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* =========================
+   03. TYPOGRAPHY
+========================= */
+h1,h2{font-weight:900;letter-spacing:-.065em;line-height:.86;margin:0;text-wrap:balance}
+h1{font-size:clamp(44px,9vw,96px)}
+h2{font-size:clamp(34px,6.4vw,74px)}
+.h-light{font-weight:300;letter-spacing:-.03em}
+
+.kicker,.micro,.field-label,.counter,.step-num,.ref-kicker,.tut-head,
+.t-num,.fr-tag,.fr-ex,.hint,.line-item em,.color-card span,.send-grid span,
+.ghost-btn,.tag,.palette-empty,.colo-label,.colo-foot,.progress-strip,.error{
+  font-family:var(--mono);
+}
+
+.kicker{
+  display:inline-block;font-size:11px;font-weight:600;letter-spacing:.1em;
+  color:var(--ink);border-bottom:2px solid var(--accent);padding:0 0 5px;margin-bottom:26px;
+}
+.micro{font-size:11px;color:var(--muted);margin-top:18px;letter-spacing:.01em}
+.hint{font-size:13.5px;line-height:1.65;color:var(--body);max-width:56ch;margin:14px 0 0}
+.intro-copy{font-weight:300;font-size:clamp(16px,2vw,19px);line-height:1.6;max-width:56ch;color:var(--body);margin:26px 0 34px}
+.rule{height:3px;background:var(--ink);margin:30px 0}
+.rule.thin{height:1px;background:var(--ink);opacity:.35;margin:34px 0 8px}
+
+/* =========================
+   04. HEADER
+========================= */
+.topbar{
+  position:sticky;top:0;z-index:20;
+  padding-top:env(safe-area-inset-top,0px);
+  background:var(--paper);
+  border-bottom:3px solid var(--ink);
+}
+.header-main{display:flex;align-items:stretch;height:84px;border-bottom:2px solid var(--ink)}
+.logo-area{
+  width:104px;flex:0 0 104px;
+  border-right:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;
+  padding:9px 13px;background:var(--paper-dark);
+}
+.logo-area img{height:100%;width:auto;object-fit:contain}
+
+.marquee{flex:1;overflow:hidden;display:flex;align-items:center;position:relative;min-width:0}
+.marquee-track{display:flex;width:max-content;animation:slide 28s linear infinite}
+.marquee-unit{display:flex;align-items:baseline;gap:22px;padding-right:22px;white-space:nowrap}
+.mq-name{font-size:38px;font-weight:900;letter-spacing:-.055em;color:var(--ink)}
+.mq-role{font-size:17px;font-weight:300;letter-spacing:.42em;color:var(--muted)}
+.mq-sep{color:var(--accent);font-size:14px}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+
+.color-bar{display:flex;height:3px;background:var(--ink)}
+
+.progress-strip{
+  display:flex;align-items:center;gap:16px;
+  padding:9px var(--gutter);
+  font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--ink);
+  border-top:1px solid var(--ink);
+}
+.progress{flex:1;height:6px;background:var(--paper-dark);border:1.5px solid var(--ink);min-width:60px}
+.progress span{display:block;height:100%;width:0;background:var(--ink);transition:width .45s ease}
+
+/* =========================
+   05. EDITORIAL FRAME
+========================= */
+.rail{
+  position:fixed;top:calc(var(--header-h) + 50px);bottom:100px;width:52px;z-index:1;pointer-events:none;
+  display:flex;flex-direction:column;justify-content:space-between;align-items:center;
+}
+.rail-left{left:12px}
+.rail-right{right:12px}
+.rail-grid{width:36px;height:36px;background-image:linear-gradient(var(--ink) 1px,transparent 1px),linear-gradient(90deg,var(--ink) 1px,transparent 1px);background-size:12px 12px;opacity:.3}
+.rail-marks{display:flex;flex-direction:column;gap:18px;color:var(--muted);font-size:12px}
+.rail-marks i{font-style:normal}
+.rail-blocks{display:flex;flex-direction:column;gap:6px}
+.rail-blocks i{width:14px;height:14px;display:block;border:1.5px solid var(--ink)}
+.rail-blocks i:nth-child(2){background:var(--accent);border-color:var(--accent)}
+.rail-num{font-family:var(--mono);font-size:26px;font-weight:600;color:var(--ink)}
+
+/* =========================
+   06. FORM SCREENS
+========================= */
+main{width:min(100%,1020px);margin:0 auto;padding:52px var(--gutter) 130px;position:relative;z-index:2}
+.screen{display:none}
+.screen.active{display:block}
+.intro{padding-top:18px}
+
+.step-head{display:grid;grid-template-columns:96px 1fr;gap:20px;align-items:start}
+.step-num{
+  font-size:34px;font-weight:600;line-height:1;
+  color:var(--ink);border-top:4px solid var(--accent);
+  padding:12px 0 0;text-align:center;
+}
+
+.field-label{
+  display:block;font-size:11px;font-weight:600;letter-spacing:.04em;
+  color:var(--ink);margin:30px 0 2px;
+}
+.field-label::before{content:"› ";color:var(--muted)}
+.field-label span{color:var(--muted);font-weight:400}
+input,textarea{
+  width:100%;font-family:var(--sans);font-size:16px;color:var(--ink);
+  background:transparent;border:0;border-bottom:2.5px solid var(--ink);border-radius:0;
+  padding:12px 0;outline:0;
+}
+textarea{min-height:82px;resize:vertical;line-height:1.5}
+input:focus,textarea:focus{border-color:var(--accent)}
+::placeholder{color:#8C877C}
+.two-fields{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+
+/* --- módulos (etapa 01) --- */
+.module-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--ink);border-right:0;border-bottom:0}
+.module{
+  border:0;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  background:transparent;min-height:118px;padding:14px;cursor:pointer;
+  display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;text-align:left;
+  transition:background .12s,color .12s;
+}
+.module i{font-size:24px;font-style:normal;color:var(--muted)}
+.module span{font-size:13.5px;font-weight:800;line-height:1.1;letter-spacing:-.01em}
+.module:hover{background:var(--paper-dark)}
+.module.selected{background:var(--ink);color:var(--paper)}
+.module.selected i{color:var(--paper)}
+
+/* --- lista de linhas (etapa 02) --- */
+.line-list{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-bottom:6px}
+.line-item{
+  border:0;border-bottom:1.5px solid var(--ink);background:none;cursor:pointer;
+  display:flex;align-items:baseline;gap:14px;
+  padding:16px 6px;width:100%;text-align:left;font-size:17px;
+}
+.line-item em{font-style:normal;font-size:11px;font-weight:600;color:var(--muted)}
+.line-item:hover{background:var(--paper-dark)}
+.line-item.selected{background:var(--ink);color:var(--paper);font-weight:800}
+.line-item.selected em{color:var(--paper)}
+
+/* =========================
+   07. COLOR SELECTOR
+========================= */
+.color-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.color-card{background:transparent;border:2px solid var(--ink);border-radius:0;padding:6px;cursor:pointer;text-align:left;transition:transform .12s}
+.color-card i{display:block;height:84px;background:var(--swatch);border:1px solid rgba(0,0,0,.25)}
+.color-card span{display:block;font-size:11px;font-weight:500;margin-top:7px;color:var(--ink)}
+.color-card:hover{transform:translate(-2px,-2px)}
+.color-card.selected{box-shadow:5px 5px 0 var(--ink);transform:translate(-3px,-3px)}
+.color-card.selected span{font-weight:600}
+.color-card.selected span::before{content:"✕ ";color:var(--ink)}
+
+.palette-bar{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+.palette-strip{display:flex;flex:1;min-width:200px;height:34px;border:2px solid var(--ink);background:var(--paper-dark)}
+.palette-strip b{flex:1;display:block}
+.palette-empty{font-size:11px;color:var(--muted);padding:10px}
+.counter{font-size:15px;font-weight:600;background:var(--ink);color:var(--paper);padding:7px 11px}
+
+/* =========================
+   08. TYPOGRAPHY SELECTOR
+========================= */
+.font-list{border-top:2px solid var(--ink)}
+.font-row{
+  width:100%;display:grid;grid-template-columns:150px 1fr auto;align-items:center;gap:18px;
+  border:0;border-bottom:1.5px solid var(--ink);background:none;cursor:pointer;
+  padding:16px 8px;text-align:left;transition:background .12s,color .12s;
+}
+.fr-tag{font-size:11px;font-weight:600;color:var(--muted)}
+.font-row strong{font-size:clamp(20px,3vw,30px);font-weight:500;letter-spacing:-.03em}
+.fr-ex{font-size:11px;color:var(--muted)}
+.f1{font-family:"Century Gothic",Futura,Avenir,sans-serif}
+.f2{font-family:Helvetica,Arial,sans-serif}
+.f3{font-family:"Trebuchet MS","Gill Sans",sans-serif}
+.f4{font-family:Georgia,"Times New Roman",serif}
+.f5{font-family:var(--mono)}
+.f6{font-family:Impact,"Haettenschweiler",sans-serif;letter-spacing:0}
+.font-row:hover{background:var(--paper-dark)}
+.font-row.selected{background:var(--ink);color:var(--paper)}
+.font-row.selected .fr-tag{color:var(--paper)}
+.font-row.selected .fr-ex{color:#CFCABF}
+
+/* --- tags (etapa 05) --- */
+.tag-cloud{display:flex;flex-wrap:wrap;gap:8px;max-width:880px}
+.tag{
+  border:2px solid var(--ink);border-radius:0;background:transparent;
+  padding:9px 14px;font-size:13px;font-weight:500;cursor:pointer;transition:.12s;
+}
+.tag:hover{background:var(--paper-dark)}
+.tag.selected{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* =========================
+   09. REFERENCES / DRIVE
+========================= */
+.ref-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:3px solid var(--ink)}
+.ref-block{padding:22px}
+.ref-block + .ref-block{border-left:3px solid var(--ink)}
+.ref-kicker{display:inline-block;font-size:11px;font-weight:600;padding:0 0 4px;margin-bottom:14px;color:var(--ink);border-bottom:2px solid var(--ink)}
+.ref-block strong{display:block;font-size:26px;font-weight:900;letter-spacing:-.05em;margin-bottom:10px}
+.ref-block p{font-size:14px;line-height:1.6;color:var(--body);margin:0 0 16px;max-width:42ch}
+.ghost-btn{
+  display:inline-block;text-decoration:none;color:var(--paper);background:var(--ink);
+  font-size:12px;font-weight:600;padding:10px 14px;transition:.12s;
+}
+.ghost-btn:hover{background:var(--ink-soft)}
+.ref-list-intro{font-size:14px;line-height:1.65;color:var(--body);max-width:64ch;margin:20px 0 0}
+
+.tut-head{
+  display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;
+  background:var(--ink);color:var(--paper);padding:6px 10px;margin:26px 0 14px;
+}
+.tutorial{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.tutorial li{display:grid;grid-template-columns:52px 1fr;gap:14px;padding:18px 0;border-bottom:1.5px solid var(--ink)}
+.t-num{font-size:20px;font-weight:600;color:var(--muted)}
+.tutorial strong{display:block;font-size:18px;font-weight:800;letter-spacing:-.02em;margin-bottom:5px}
+.tutorial p{margin:0;font-size:14px;line-height:1.6;color:var(--body);max-width:58ch}
+.tutorial em{font-style:normal;font-weight:600}
+.tutorial code{
+  display:block;font-family:var(--mono);font-size:12px;line-height:1.7;
+  background:var(--ink);color:var(--paper);
+  padding:11px 13px;margin-top:9px;white-space:pre;overflow-x:auto;
+}
+.send-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--ink);border:2px solid var(--ink);margin-top:6px}
+.send-grid div{background:var(--paper);padding:16px}
+.send-grid span{font-size:12px;font-weight:600;color:var(--muted);display:block;margin-bottom:8px}
+.send-grid strong{display:block;font-size:15px;font-weight:800;margin-bottom:5px}
+.send-grid p{margin:0;font-size:13px;line-height:1.55;color:var(--body)}
+
+/* =========================
+   10. SUMMARY
+========================= */
+.summary{margin:0;border-top:2px solid var(--ink)}
+.summary div{display:grid;grid-template-columns:180px 1fr;gap:16px;padding:11px 0;border-bottom:1.5px solid var(--ink)}
+.summary dt{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted)}
+.summary dd{margin:0;font-size:15px;line-height:1.5;word-break:break-word;color:var(--ink)}
+.summary dd.empty{color:var(--muted);font-family:var(--mono);font-size:12px}
+.send-note{
+  border-left:5px solid var(--ink);background:var(--paper-dark);
+  padding:15px 17px;margin:26px 0 20px;font-size:14px;line-height:1.6;max-width:62ch;color:var(--body);
+}
+.send-actions{display:flex;flex-wrap:wrap;gap:12px}
+.error{color:var(--accent);font-size:12px;font-weight:500;min-height:18px;margin:12px 0 0}
+
+/* =========================
+   11. CONTROLS
+========================= */
+.primary{
+  border:0;background:var(--ink);color:var(--paper);
+  padding:15px 22px;border-radius:0;cursor:pointer;
+  font-size:13px;font-weight:800;transition:.12s;
+}
+.primary:hover{background:var(--ink-soft)}
+.send{font-size:15px;padding:17px 26px}
+.pdf{background:transparent;color:var(--ink);border:2.5px solid var(--ink);font-size:15px;padding:14.5px 26px}
+.pdf:hover{background:var(--ink);color:var(--paper)}
+.controls{
+  position:fixed;left:0;right:0;bottom:0;z-index:15;
+  height:calc(var(--controls-h) + env(safe-area-inset-bottom,0px));
+  padding:0 var(--gutter) env(safe-area-inset-bottom,0px);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  background:var(--paper);border-top:3px solid var(--ink);
+}
+.back,.restart{
+  border:0;background:none;cursor:pointer;
+  font-family:var(--mono);font-size:12px;font-weight:500;color:var(--muted);padding:8px 0;
+}
+.back:hover,.restart:hover{color:var(--ink)}
+.back:disabled{opacity:0;pointer-events:none}
+.restart{margin-right:auto;margin-left:22px}
+
+/* =========================
+   12. COLOFÃO
+========================= */
+.colophon{border-top:3px solid var(--ink);margin-bottom:var(--controls-h);background:var(--paper-dark)}
+.colo-grid{
+  display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:0;
+  padding:0;
+}
+.colo-grid > *{padding:26px var(--gutter)}
+.colo-grid > * + *{border-left:2px solid var(--ink)}
+.colo-id{display:flex;align-items:center;gap:14px}
+.colo-id img{width:54px;height:54px;object-fit:contain;background:var(--paper);padding:5px;border:2px solid var(--ink)}
+.colo-id strong{display:block;font-size:22px;font-weight:900;letter-spacing:-.05em;line-height:1}
+.colo-id span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.colo-label{display:inline-block;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--ink);border-bottom:2px solid var(--ink);padding:0 0 4px;margin-bottom:12px}
+.colo-block a{display:block;font-size:18px;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.02em;margin-bottom:5px;width:fit-content;border-bottom:3px solid var(--ink)}
+.colo-block a:hover{color:var(--muted)}
+.colo-block p{margin:0;font-size:14px;line-height:1.55;color:var(--body);max-width:32ch}
+.colo-bar{height:3px;background:var(--ink)}
+.colo-foot{
+  display:flex;justify-content:space-between;gap:10px;
+  padding:13px var(--gutter);background:var(--ink);color:var(--paper);
+  font-size:11px;letter-spacing:.04em;
+}
+
+/* =========================
+   13. RESPONSIVE
+========================= */
+@media(max-width:1180px){ .rail{display:none} }
+@media(max-width:900px){
+  .module-grid{grid-template-columns:repeat(2,1fr)}
+  .line-list,.ref-split,.send-grid,.two-fields{grid-template-columns:1fr}
+  .ref-block + .ref-block{border-left:0;border-top:3px solid var(--ink)}
+  .font-row{grid-template-columns:1fr;gap:6px;padding:14px 4px}
+  .summary div{grid-template-columns:1fr;gap:3px}
+  .colo-grid{grid-template-columns:1fr}
+  .colo-grid > * + *{border-left:0;border-top:2px solid var(--ink)}
+}
+@media(max-width:640px){
+  :root{--header-h:146px}
+  .header-main{height:68px}
+  .logo-area{width:76px;flex:0 0 76px;padding:8px 10px}
+  .mq-name{font-size:26px}
+  .mq-role{font-size:13px;letter-spacing:.3em}
+  .marquee-track{animation-duration:34s}
+  main{padding:32px var(--gutter) 120px}
+  .step-head{grid-template-columns:72px 1fr;gap:14px}
+  .step-num{font-size:26px;padding:9px 0}
+  .color-grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .color-card i{height:92px}
+  .tutorial li{grid-template-columns:38px 1fr;gap:10px}
+  .send-actions .primary{flex:1;text-align:center}
+  .restart{margin-left:10px}
+  .primary{padding:13px 16px;font-size:12px}
+}
